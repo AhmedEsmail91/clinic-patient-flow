@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Daffodil Clinic Design System */
+    --background: 42 40% 96%;
+    --foreground: 339 65% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 339 65% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 339 65% 20%;
+
+    /* Clinic Primary Colors */
+    --primary: 339 65% 30%; /* #66273c - Deep burgundy */
+    --primary-foreground: 42 40% 96%;
+    --primary-light: 339 65% 40%;
+    --primary-dark: 339 65% 20%;
+
+    /* Clinic Secondary Colors */
+    --secondary: 42 60% 65%; /* #dcbd6c - Golden yellow */
+    --secondary-foreground: 339 65% 20%;
+    --secondary-light: 42 60% 75%;
+    --secondary-dark: 42 60% 55%;
+
+    /* Clinic Accent Colors */
+    --accent: 42 40% 96%; /* #f8f3e4 - Cream */
+    --accent-foreground: 339 65% 30%;
+
+    --muted: 42 30% 90%;
+    --muted-foreground: 339 30% 45%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 42 40% 96%;
+
+    --border: 42 30% 85%;
+    --input: 42 30% 90%;
+    --ring: 339 65% 30%;
+
+    /* Medical Theme Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--accent)), hsl(var(--background)));
+
+    /* Medical Shadows */
+    --shadow-soft: 0 4px 20px -8px hsl(var(--primary) / 0.15);
+    --shadow-medical: 0 8px 30px -12px hsl(var(--primary) / 0.25);
+    --shadow-glow: 0 0 40px hsl(var(--secondary) / 0.3);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 339 65% 8%;
+    --foreground: 42 40% 96%;
+
+    --card: 339 65% 12%;
+    --card-foreground: 42 40% 96%;
+
+    --popover: 339 65% 12%;
+    --popover-foreground: 42 40% 96%;
+
+    --primary: 42 60% 75%;
+    --primary-foreground: 339 65% 20%;
+    --primary-light: 42 60% 85%;
+    --primary-dark: 42 60% 65%;
+
+    --secondary: 339 65% 40%;
+    --secondary-foreground: 42 40% 96%;
+    --secondary-light: 339 65% 50%;
+    --secondary-dark: 339 65% 30%;
+
+    --accent: 339 30% 20%;
+    --accent-foreground: 42 40% 96%;
+
+    --muted: 339 30% 15%;
+    --muted-foreground: 42 20% 65%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 42 40% 96%;
+
+    --border: 339 30% 20%;
+    --input: 339 30% 18%;
+    --ring: 42 60% 75%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    transition: var(--transition-smooth);
+  }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  [dir="ltr"] {
+    direction: ltr;
+  }
+}
+
+@layer utilities {
+  /* Medical Theme Utilities */
+  .medical-gradient {
+    background: var(--gradient-primary);
+  }
+
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  .soft-shadow {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .medical-shadow {
+    box-shadow: var(--shadow-medical);
+  }
+
+  .glow-shadow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+
+  .bounce-transition {
+    transition: var(--transition-bounce);
+  }
+
+  /* Medical Cards */
+  .medical-card {
+    @apply bg-card border border-border rounded-xl soft-shadow smooth-transition;
+  }
+
+  .medical-card:hover {
+    @apply medical-shadow scale-105;
+  }
+
+  /* Medical Buttons */
+  .btn-medical {
+    @apply medical-gradient text-primary-foreground px-6 py-3 rounded-lg font-medium smooth-transition;
+  }
+
+  .btn-medical:hover {
+    @apply scale-105 glow-shadow;
+  }
+}
